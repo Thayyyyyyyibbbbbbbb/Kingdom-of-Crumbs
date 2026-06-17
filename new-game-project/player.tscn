@@ -402,9 +402,8 @@ z_index = 1
 texture_filter = 1
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_hqns4")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.8056759
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105201006]
 position = Vector2(1, -1)
@@ -415,4 +414,4 @@ root_node = NodePath("../CollisionShape2D")
 libraries/ = SubResource("AnimationLibrary_1jxqw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1571791391]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
