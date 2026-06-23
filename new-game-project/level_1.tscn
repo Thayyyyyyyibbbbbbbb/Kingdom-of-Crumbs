@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b8o2epv3ek5cy" path="res://tileset.png" id="2_hn12h"]
 [ext_resource type="Texture2D" uid="uid://crbcm1483v2aq" path="res://Knight 2D Pixel Art/Knight 2D Pixel Art/forest.png" id="3_hn12h"]
 [ext_resource type="Texture2D" uid="uid://b7q4ph1y0cd75" path="res://Knight 2D Pixel Art/Knight 2D Pixel Art/Sprites/gothic_arrow_sign_recolor_48x48.png" id="4_ihfcg"]
-[ext_resource type="PackedScene" uid="uid://jpnafnffodhg" path="res://coin.tscn" id="5_rka8t"]
+[ext_resource type="PackedScene" uid="uid://cshb3yoh03ypp" path="res://coin.tscn" id="5_rka8t"]
+[ext_resource type="Texture2D" uid="uid://lo57ero7cer" path="res://Worm Sprite Sheet.png" id="6_5hph3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("2_hn12h")
@@ -566,6 +567,73 @@ texture = ExtResource("2_hn12h")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ihfcg")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
+size = Vector2(9.06093, 12.960576)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hph3"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7kpp"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjebc"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rr72"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyffv"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(128, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pe0h"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(160, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27bay"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(192, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sof0w"]
+atlas = ExtResource("6_5hph3")
+region = Rect2(224, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hph3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7kpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjebc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rr72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyffv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pe0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27bay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sof0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
 [node name="Level1" type="Node2D" unique_id=1490589]
 position = Vector2(-29, -22)
 
@@ -639,64 +707,66 @@ texture = ExtResource("4_ihfcg")
 position = Vector2(-225, 15)
 
 [node name="coin" parent="." unique_id=1458490676 instance=ExtResource("5_rka8t")]
-position = Vector2(-16, 0)
+position = Vector2(-154, -1)
 
-[node name="coin2" parent="." unique_id=1955803701 instance=ExtResource("5_rka8t")]
-position = Vector2(-99, -30)
+[node name="coin2" parent="." unique_id=215400980 instance=ExtResource("5_rka8t")]
+position = Vector2(-65, -17)
 
-[node name="coin3" parent="." unique_id=1714426531 instance=ExtResource("5_rka8t")]
-position = Vector2(129, -41)
+[node name="coin3" parent="." unique_id=2117795838 instance=ExtResource("5_rka8t")]
+position = Vector2(3, -3)
 
-[node name="coin4" parent="." unique_id=420002382 instance=ExtResource("5_rka8t")]
-position = Vector2(186, -9)
+[node name="coin4" parent="." unique_id=420907832 instance=ExtResource("5_rka8t")]
+position = Vector2(75, -7)
 
-[node name="coin5" parent="." unique_id=1930863828 instance=ExtResource("5_rka8t")]
-position = Vector2(315, -17)
+[node name="coin5" parent="." unique_id=1355692547 instance=ExtResource("5_rka8t")]
+position = Vector2(154, 0)
 
-[node name="coin6" parent="." unique_id=1507795383 instance=ExtResource("5_rka8t")]
-position = Vector2(424, -27)
+[node name="coin6" parent="." unique_id=424513722 instance=ExtResource("5_rka8t")]
+position = Vector2(211, -11)
 
-[node name="coin7" parent="." unique_id=1019156767 instance=ExtResource("5_rka8t")]
-position = Vector2(505, 41)
+[node name="coin7" parent="." unique_id=1099341999 instance=ExtResource("5_rka8t")]
+position = Vector2(318, -2)
 
-[node name="coin8" parent="." unique_id=2072422075 instance=ExtResource("5_rka8t")]
-position = Vector2(506, 90)
+[node name="coin8" parent="." unique_id=2104727951 instance=ExtResource("5_rka8t")]
+position = Vector2(416, -13)
 
-[node name="coin9" parent="." unique_id=1772664866 instance=ExtResource("5_rka8t")]
-position = Vector2(507, 145)
+[node name="coin9" parent="." unique_id=1205163782 instance=ExtResource("5_rka8t")]
+position = Vector2(504, -2)
 
-[node name="coin10" parent="." unique_id=1931846759 instance=ExtResource("5_rka8t")]
-position = Vector2(504, 200)
+[node name="coin10" parent="." unique_id=1952066760 instance=ExtResource("5_rka8t")]
+position = Vector2(504, 107)
 
-[node name="coin11" parent="." unique_id=104841908 instance=ExtResource("5_rka8t")]
-position = Vector2(504, 249)
+[node name="coin11" parent="." unique_id=693526356 instance=ExtResource("5_rka8t")]
+position = Vector2(506, 250)
 
-[node name="coin12" parent="." unique_id=593200118 instance=ExtResource("5_rka8t")]
-position = Vector2(504, 318)
+[node name="coin12" parent="." unique_id=413732813 instance=ExtResource("5_rka8t")]
+position = Vector2(505, 365)
 
-[node name="coin13" parent="." unique_id=1863276773 instance=ExtResource("5_rka8t")]
-position = Vector2(505, 366)
+[node name="coin13" parent="." unique_id=700515363 instance=ExtResource("5_rka8t")]
+position = Vector2(504, 511)
 
-[node name="coin14" parent="." unique_id=2000742278 instance=ExtResource("5_rka8t")]
-position = Vector2(505, 443)
+[node name="coin14" parent="." unique_id=512000161 instance=ExtResource("5_rka8t")]
+position = Vector2(507, 703)
 
-[node name="coin15" parent="." unique_id=1570550802 instance=ExtResource("5_rka8t")]
-position = Vector2(505, 507)
+[node name="coin15" parent="." unique_id=1067276588 instance=ExtResource("5_rka8t")]
+position = Vector2(504, 917)
 
-[node name="coin16" parent="." unique_id=2046399642 instance=ExtResource("5_rka8t")]
-position = Vector2(504, 591)
+[node name="coin16" parent="." unique_id=1144554533 instance=ExtResource("5_rka8t")]
+position = Vector2(508, 1119)
 
-[node name="coin17" parent="." unique_id=1101683235 instance=ExtResource("5_rka8t")]
-position = Vector2(505, 688)
+[node name="coin17" parent="." unique_id=112414033 instance=ExtResource("5_rka8t")]
+position = Vector2(636, 1214)
 
-[node name="coin18" parent="." unique_id=357415374 instance=ExtResource("5_rka8t")]
-position = Vector2(503, 810)
+[node name="gummy worm" type="CharacterBody2D" parent="." unique_id=1186427210]
 
-[node name="coin19" parent="." unique_id=928005008 instance=ExtResource("5_rka8t")]
-position = Vector2(505, 921)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gummy worm" unique_id=363056508]
+position = Vector2(945.50006, 1190.5938)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
 
-[node name="coin20" parent="." unique_id=1360457238 instance=ExtResource("5_rka8t")]
-position = Vector2(510, 1014)
-
-[node name="coin21" parent="." unique_id=1243190372 instance=ExtResource("5_rka8t")]
-position = Vector2(514, 1136)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="gummy worm" unique_id=181838660]
+texture_filter = 1
+position = Vector2(948, 1160)
+scale = Vector2(8.71875, 8.71875)
+sprite_frames = SubResource("SpriteFrames_ggavl")
+autoplay = "default"

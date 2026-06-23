@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://jpnafnffodhg"]
+[gd_scene format=3 uid="uid://cshb3yoh03ypp"]
 
-[ext_resource type="Script" uid="uid://bhhvgescthy7v" path="res://area_2d.gd" id="1_0t63x"]
+[ext_resource type="Script" path="res://area_2d.gd" id="1_0t63x"]
 [ext_resource type="Texture2D" uid="uid://s21qfnn0sw4b" path="res://coin3_16x16.png" id="2_v7riw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rgpn"]
+size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hph3"]
 atlas = ExtResource("2_v7riw")
@@ -109,19 +112,16 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rgpn"]
-size = Vector2(12, 12)
-
 [node name="coin" type="Area2D" unique_id=1458490676]
 script = ExtResource("1_0t63x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=50001392]
-texture_filter = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=69100150]
 position = Vector2(0, 21)
+shape = SubResource("RectangleShape2D_5rgpn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=50001392]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dl81w")
 autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D" unique_id=69100150]
-shape = SubResource("RectangleShape2D_5rgpn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
