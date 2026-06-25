@@ -104,7 +104,3 @@ func _on_animation_finished():
 
 func _on_invincible_timer_timeout():
 	is_invincible = false
-
-
-func _on_timer_timeout() -> void:
-	pass # Replace with function body.
