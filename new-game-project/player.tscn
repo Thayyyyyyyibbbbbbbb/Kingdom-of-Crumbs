@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djplpiuqqf4u7" path="res://Knight 2D Pixel Art/Knight 2D Pixel Art/Sprites/without_outline/WALK.png" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://dqdth5rnqq45s" path="res://Knight 2D Pixel Art/Knight 2D Pixel Art/Sprites/without_outline/ATTACK 3.png" id="4_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://dtnpnplv3grp4" path="res://Knight 2D Pixel Art/Knight 2D Pixel Art/Sprites/without_outline/DEATH.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://cg6nqpmjecbga" path="res://Knight 2D Pixel Art/Knight 2D Pixel Art/Sprites/without_outline/HURT.png" id="6_b26j0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
 atlas = ExtResource("2_sweqy")
@@ -124,6 +125,22 @@ region = Rect2(960, 0, 96, 84)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfour"]
 atlas = ExtResource("5_dw050")
 region = Rect2(1056, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
+atlas = ExtResource("6_b26j0")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
+atlas = ExtResource("6_b26j0")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
+atlas = ExtResource("6_b26j0")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fddr8"]
+atlas = ExtResource("6_b26j0")
+region = Rect2(288, 0, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epypp"]
 atlas = ExtResource("2_hqtel")
@@ -316,6 +333,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_urp6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwjto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_606se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fddr8")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_epypp")
 }, {
 "duration": 1.0,
@@ -492,9 +526,9 @@ z_index = 1
 texture_filter = 1
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_hqns4")
-animation = &"jump"
+animation = &"hurt"
 autoplay = "idle"
-frame_progress = 0.35302317
+frame_progress = 0.49416816
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105201006]
 position = Vector2(1, -1)
@@ -506,3 +540,8 @@ libraries/ = SubResource("AnimationLibrary_1jxqw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1571791391]
 zoom = Vector2(3, 3)
+
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=529206796]
+wait_time = 0.5
+
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_timer_timeout"]

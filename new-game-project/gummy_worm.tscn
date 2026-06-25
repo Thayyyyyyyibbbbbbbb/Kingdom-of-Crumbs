@@ -1,9 +1,34 @@
 [gd_scene format=3 uid="uid://fkpopsd6gxsu"]
 
 [ext_resource type="Texture2D" uid="uid://lo57ero7cer" path="res://Worm Sprite Sheet.png" id="1_kneyc"]
+[ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_ulffr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
-size = Vector2(9.06093, 12.960576)
+size = Vector2(9.232974, 13.992832)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulffr"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccrpo"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_get01"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok8r6"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgw3h"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b30vy"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(160, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hph3"]
 atlas = ExtResource("1_kneyc")
@@ -41,6 +66,29 @@ region = Rect2(224, 0, 32, 36)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ulffr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccrpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_get01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok8r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgw3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b30vy")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5hph3")
 }, {
 "duration": 1.0,
@@ -69,25 +117,21 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kneyc"]
-size = Vector2(101.5, 149.5)
-
-[node name="gummy worm" type="CharacterBody2D" unique_id=554329869]
+[node name="gummy worm" type="Area2D" unique_id=267568932]
+position = Vector2(1, 1)
+script = ExtResource("1_ulffr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
-position = Vector2(549.5, 243.5)
+position = Vector2(0.24999654, -14.000001)
 scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_ubhxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
 texture_filter = 1
-position = Vector2(554, 213)
+position = Vector2(9, -41)
 scale = Vector2(8.71875, 8.71875)
 sprite_frames = SubResource("SpriteFrames_ggavl")
 autoplay = "default"
+frame_progress = 0.5797768
 
-[node name="Area2D" type="Area2D" parent="." unique_id=241633059]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1476347993]
-position = Vector2(407, 269)
-shape = SubResource("RectangleShape2D_kneyc")
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
