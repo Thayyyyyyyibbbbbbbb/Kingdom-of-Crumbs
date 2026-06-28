@@ -10,7 +10,6 @@ const KNOCKBACK_Y = -200.0
 @onready var invincible_timer: Timer = $InvincibleTimer
 
 var score = 0
-
 var health = 100
 
 var is_attacking = false
@@ -21,6 +20,9 @@ func _ready():
 	animator.sprite_frames.set_animation_loop("attack", false)
 	animator.sprite_frames.set_animation_loop("hurt", false)
 	animator.animation_finished.connect(_on_animation_finished)
+	
+	# FIX 1: Explicitly connect the timer signal in code so it never breaks
+	invincible_timer.timeout.connect(_on_invincible_timer_timeout)
 
 func take_damage(amount, enemy_position = Vector2.ZERO):
 	if is_invincible or health <= 0:
@@ -45,6 +47,8 @@ func take_damage(amount, enemy_position = Vector2.ZERO):
 	velocity.x = direction * KNOCKBACK_X
 	velocity.y = KNOCKBACK_Y
 
+	# FIX 2: Stop the animator first to force it to clear and play from frame 0
+	animator.stop()
 	animator.play("hurt")
 
 	invincible_timer.start()
