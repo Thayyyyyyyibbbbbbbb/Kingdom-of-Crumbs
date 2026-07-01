@@ -637,7 +637,7 @@ scale = Vector2(3.5155952, 3.5155952)
 texture = ExtResource("4_ihfcg")
 
 [node name="Body" parent="." unique_id=2004113084 instance=ExtResource("1_hbghi")]
-position = Vector2(672, 1228)
+position = Vector2(511, 1232)
 
 [node name="coin" parent="." unique_id=1458490676 instance=ExtResource("5_rka8t")]
 position = Vector2(-154, -1)
@@ -691,5 +691,7 @@ position = Vector2(508, 1119)
 position = Vector2(636, 1214)
 
 [node name="gummy worm" parent="." unique_id=267568932 instance=ExtResource("6_5hph3")]
-position = Vector2(771, 1216)
-scale = Vector2(0.7, 0.7)
+position = Vector2(771, 1202)
+
+[node name="gummy worm2" parent="." unique_id=874500542 instance=ExtResource("6_5hph3")]
+position = Vector2(1155, 1201)

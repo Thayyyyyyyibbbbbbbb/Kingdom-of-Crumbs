@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://lo57ero7cer" path="res://Worm Sprite Sheet.png" id="1_kneyc"]
 [ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_ulffr"]
+[ext_resource type="Script" uid="uid://pgpdg76ncnbl" path="res://hurtbox.gd" id="3_ccrpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
-size = Vector2(9.232974, 13.992832)
+size = Vector2(7.225806, 10.437276)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulffr"]
 atlas = ExtResource("1_kneyc")
@@ -122,17 +123,26 @@ position = Vector2(1, 1)
 script = ExtResource("1_ulffr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
-position = Vector2(0.24999654, -14.000001)
+position = Vector2(3.5000005, 1.500001)
 scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_ubhxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
 texture_filter = 1
-position = Vector2(9, -41)
-scale = Vector2(8.71875, 8.71875)
+position = Vector2(7, -23)
+scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_ggavl")
 autoplay = "default"
-frame_progress = 0.5797768
+frame_progress = 0.9346013
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
+script = ExtResource("3_ccrpo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1535041137]
+position = Vector2(3.5000005, 1.500001)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

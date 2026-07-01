@@ -15,24 +15,25 @@ var health = 100
 var is_attacking = false
 var is_hurt = false
 var is_invincible = false
+var is_dead = false
 
 func _ready():
 	animator.sprite_frames.set_animation_loop("attack", false)
 	animator.sprite_frames.set_animation_loop("hurt", false)
+	animator.sprite_frames.set_animation_loop("death", false)
+
 	animator.animation_finished.connect(_on_animation_finished)
-	
-	# FIX 1: Explicitly connect the timer signal in code so it never breaks
 	invincible_timer.timeout.connect(_on_invincible_timer_timeout)
 
 func take_damage(amount, enemy_position = Vector2.ZERO):
-	if is_invincible or health <= 0:
+	if is_invincible or is_dead or health <= 0:
 		return
 
 	health -= amount
 	print("Health:", health)
 
 	if health <= 0:
-		die()
+		die(enemy_position)
 		return
 
 	is_hurt = true
@@ -40,24 +41,41 @@ func take_damage(amount, enemy_position = Vector2.ZERO):
 	is_invincible = true
 
 	var direction = sign(global_position.x - enemy_position.x)
-
 	if direction == 0:
 		direction = -1
 
 	velocity.x = direction * KNOCKBACK_X
 	velocity.y = KNOCKBACK_Y
 
-	# FIX 2: Stop the animator first to force it to clear and play from frame 0
 	animator.stop()
 	animator.play("hurt")
 
 	invincible_timer.start()
 
-func die():
-	print("Player Died")
-	get_tree().reload_current_scene()
+func die(enemy_position = Vector2.ZERO):
+	is_dead = true
+	is_hurt = false
+	is_attacking = false
+	is_invincible = true
+
+	var direction = sign(global_position.x - enemy_position.x)
+	if direction == 0:
+		direction = -1
+
+	velocity.x = direction * KNOCKBACK_X
+	velocity.y = KNOCKBACK_Y
+
+	animator.stop()
+	animator.play("death")
 
 func _physics_process(delta):
+
+	if is_dead:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+
+		move_and_slide()
+		return
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -106,5 +124,13 @@ func _on_animation_finished():
 	elif animator.animation == "hurt":
 		is_hurt = false
 
+	elif animator.animation == "death":
+		get_tree().reload_current_scene()
+
 func _on_invincible_timer_timeout():
-	is_invincible = false
+	if !is_dead:
+		is_invincible = false
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	pass # Replace with function body.
