@@ -8,6 +8,7 @@ const KNOCKBACK_Y = -200.0
 
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
 @onready var invincible_timer: Timer = $InvincibleTimer
+@onready var hitbox: CollisionShape2D = $Hitbox/CollisionShape2D2
 
 var score = 0
 var health = 100
@@ -102,6 +103,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack") and !is_attacking:
 		is_attacking = true
 		animator.play("attack")
+		await get_tree().create_timer(0.3).timeout
+		hitbox.set_deferred("disabled", false)
+		await get_tree().create_timer(0.15).timeout
+		hitbox.set_deferred("disabled", true)
 
 	if !is_attacking:
 		if !is_on_floor():

@@ -584,6 +584,7 @@ script = ExtResource("10_n7ghd")
 position = Vector2(19, 2.5000002)
 scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_nvl01")
+disabled = true
 debug_color = Color(5.5350365e-06, 0.6315294, 0.46380228, 0.41960785)
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
