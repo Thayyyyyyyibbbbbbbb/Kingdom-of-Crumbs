@@ -577,7 +577,7 @@ zoom = Vector2(3, 3)
 [node name="InvincibleTimer" type="Timer" parent="." unique_id=529206796]
 wait_time = 0.5
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1543469122]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1543469122 groups=["player_hitbox"]]
 script = ExtResource("10_n7ghd")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1328357578]

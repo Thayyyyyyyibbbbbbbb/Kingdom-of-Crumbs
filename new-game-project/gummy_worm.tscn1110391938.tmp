@@ -144,6 +144,7 @@ scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_ubhxj")
 debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

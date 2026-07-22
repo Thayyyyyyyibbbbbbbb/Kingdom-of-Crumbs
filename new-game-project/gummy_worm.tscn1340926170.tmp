@@ -121,6 +121,7 @@ animations = [{
 [node name="gummy worm" type="Area2D" unique_id=267568932]
 position = Vector2(1, 1)
 script = ExtResource("1_ulffr")
+damage_amount = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
 position = Vector2(3.5000005, 1.500001)

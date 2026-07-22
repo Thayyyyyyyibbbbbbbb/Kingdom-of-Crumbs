@@ -3,13 +3,13 @@ extends Area2D
 @export var damage_amount := 40
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hurtbox: HurtBox = $Hurtbox
+
 
 var is_dead := false
 
 func _ready() -> void:
-	hurtbox.hurted.connect(_on_hurtbox_hurted)
-	hurtbox.died.connect(_on_hurtbox_died)
+	
+
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 
 func _on_body_entered(body: Node) -> void:
@@ -33,3 +33,4 @@ func _on_hurtbox_died() -> void:
 func _on_animation_finished() -> void:
 	if animated_sprite.animation == "death":
 		queue_free()
+		
