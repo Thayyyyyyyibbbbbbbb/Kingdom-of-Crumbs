@@ -1,10 +1,39 @@
 [gd_scene format=3 uid="uid://cshb3yoh03ypp"]
 
 [ext_resource type="Script" path="res://area_2d.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://ls88i1y7umyj" path="res://New Piskel (2).png" id="2_pdq0q"]
 [ext_resource type="Texture2D" uid="uid://s21qfnn0sw4b" path="res://coin3_16x16.png" id="2_v7riw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rgpn"]
-size = Vector2(12, 12)
+size = Vector2(13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14il"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(922, 0, 922, 980)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4etq"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(1844, 0, 922, 980)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4fra"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(0, 980, 922, 980)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te2np"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(922, 980, 922, 980)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1j4n"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(1844, 980, 922, 980)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1mwu"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(0, 1960, 922, 980)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf4yh"]
+atlas = ExtResource("2_pdq0q")
+region = Rect2(922, 1960, 922, 980)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hph3"]
 atlas = ExtResource("2_v7riw")
@@ -66,6 +95,32 @@ region = Rect2(208, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w14il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4etq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4fra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1j4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1mwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf4yh")
+}],
+"loop": true,
+"name": &"Cookie coin",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5hph3")
 }, {
 "duration": 1.0,
@@ -116,12 +171,15 @@ animations = [{
 script = ExtResource("1_0t63x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=69100150]
-position = Vector2(0, 21)
+position = Vector2(-5.5, 20.5)
 shape = SubResource("RectangleShape2D_5rgpn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=50001392]
 texture_filter = 1
+position = Vector2(22.5, 24.5)
+scale = Vector2(0.06735358, 0.06735358)
 sprite_frames = SubResource("SpriteFrames_dl81w")
-autoplay = "default"
+animation = &"Cookie coin"
+autoplay = "Cookie coin"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -400.0
 
 const KNOCKBACK_X = 300.0
 const KNOCKBACK_Y = -200.0
+const KNOCKBACK_FRICTION = 600.0
 
 @onready var animator: AnimatedSprite2D = $AnimatedSprite2D
 @onready var invincible_timer: Timer = $InvincibleTimer
@@ -33,12 +34,15 @@ func take_damage(amount, enemy_position = Vector2.ZERO):
 	health -= amount
 	print("Health:", health)
 
+	# Instantly cancel attacks so clicking can't overlap with hurt state
+	is_attacking = false
+	hitbox.set_deferred("disabled", true)
+
 	if health <= 0:
 		die(enemy_position)
 		return
 
 	is_hurt = true
-	is_attacking = false
 	is_invincible = true
 
 	var direction = sign(global_position.x - enemy_position.x)
@@ -70,46 +74,40 @@ func die(enemy_position = Vector2.ZERO):
 	animator.play("death")
 
 func _physics_process(delta):
-
-	if is_dead:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-
-		move_and_slide()
-		return
-
+	# Apply gravity whenever in air
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if is_hurt:
+	if is_dead:
 		move_and_slide()
 		return
 
+	# State 1: Locked in Hurt State
+	if is_hurt:
+		# Decay horizontal momentum smoothly
+		velocity.x = move_toward(velocity.x, 0, KNOCKBACK_FRICTION * delta)
+		move_and_slide()
+		return # <-- Completely ignores attack & movement inputs until hurt finishes!
+
+	# State 2: Normal Movement
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 
-	if direction:
+	if direction != 0:
 		velocity.x = direction * SPEED
+		animator.flip_h = (direction < 0)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if direction > 0:
-		animator.flip_h = false
-	elif direction < 0:
-		animator.flip_h = true
+	# CAN ONLY ATTACK IF NOT HURT AND NOT ALREADY ATTACKING
+	if Input.is_action_just_pressed("attack") and not is_attacking and not is_hurt:
+		perform_attack()
 
-	if Input.is_action_just_pressed("attack") and !is_attacking:
-		is_attacking = true
-		animator.play("attack")
-		await get_tree().create_timer(0.3).timeout
-		hitbox.set_deferred("disabled", false)
-		await get_tree().create_timer(0.15).timeout
-		hitbox.set_deferred("disabled", true)
-
-	if !is_attacking:
-		if !is_on_floor():
+	# Handle Default Animations
+	if not is_attacking:
+		if not is_on_floor():
 			if animator.animation != "jump":
 				animator.play("jump")
 		elif direction != 0:
@@ -121,21 +119,33 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _on_animation_finished():
+func perform_attack():
+	is_attacking = true
+	animator.play("attack")
+	
+	await get_tree().create_timer(0.3).timeout
+	if is_attacking and not is_hurt: # Guard check after delay
+		hitbox.set_deferred("disabled", false)
+		
+	await get_tree().create_timer(0.15).timeout
+	hitbox.set_deferred("disabled", true)
 
+func _on_animation_finished():
 	if animator.animation == "attack":
 		is_attacking = false
 
 	elif animator.animation == "hurt":
 		is_hurt = false
+		# Force velocity.x to 0 if no input is being pressed upon landing/recovering
+		if Input.get_axis("ui_left", "ui_right") == 0:
+			velocity.x = 0
 
 	elif animator.animation == "death":
 		get_tree().reload_current_scene()
 
 func _on_invincible_timer_timeout():
-	if !is_dead:
+	if not is_dead:
 		is_invincible = false
 
-
 func _on_animated_sprite_2d_frame_changed() -> void:
-	pass # Replace with function body.
+	pass

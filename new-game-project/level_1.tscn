@@ -637,7 +637,7 @@ scale = Vector2(3.5155952, 3.5155952)
 texture = ExtResource("4_ihfcg")
 
 [node name="Body" parent="." unique_id=2004113084 instance=ExtResource("1_hbghi")]
-position = Vector2(511, 1232)
+position = Vector2(530, 1196)
 
 [node name="coin" parent="." unique_id=1458490676 instance=ExtResource("5_rka8t")]
 position = Vector2(-154, -1)
