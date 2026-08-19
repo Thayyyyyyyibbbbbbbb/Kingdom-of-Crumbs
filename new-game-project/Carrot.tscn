@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://brg7elhq1xuyj"]
+
+[ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_ffjwf"]
+[ext_resource type="Texture2D" uid="uid://d23bbrw8g2pty" path="res://Testing Sprites/Carrot/Spin/Carrot1.png" id="2_hmfi6"]
+[ext_resource type="Texture2D" uid="uid://t1lv3h31n4n1" path="res://Testing Sprites/Carrot/Spin/Carrot2.png" id="3_caihx"]
+[ext_resource type="Script" uid="uid://pgpdg76ncnbl" path="res://hurtbox.gd" id="3_lu4cr"]
+[ext_resource type="Texture2D" uid="uid://bu0nttpxtoloo" path="res://Testing Sprites/Carrot/Spin/Carrot3.png" id="4_u6ra8"]
+[ext_resource type="Texture2D" uid="uid://c000dil0yopxl" path="res://Testing Sprites/Carrot/Spin/Carrot4.png" id="5_6tn27"]
+[ext_resource type="Texture2D" uid="uid://hxjvoxmo7wu8" path="res://Testing Sprites/Carrot/Spin/Carrot5.png" id="6_n5sgi"]
+[ext_resource type="Texture2D" uid="uid://baigs4bm77utq" path="res://Testing Sprites/Carrot/Spin/Carrot6.png" id="7_nija5"]
+[ext_resource type="Texture2D" uid="uid://bymi2kaxkdi35" path="res://Testing Sprites/Carrot/Spin/Carrot7.png" id="8_w4j3n"]
+[ext_resource type="Texture2D" uid="uid://chp3u7r683fcg" path="res://Testing Sprites/Carrot/Spin/Carrot8.png" id="9_4jo5g"]
+[ext_resource type="Texture2D" uid="uid://cdeibjnwqd4r4" path="res://Testing Sprites/Carrot/Spin/Carrot9.png" id="10_enven"]
+[ext_resource type="Texture2D" uid="uid://tskrysuc27jd" path="res://Testing Sprites/Carrot/Spin/Carrot10.png" id="11_ubwbb"]
+[ext_resource type="Texture2D" uid="uid://cluit4g5hm3jm" path="res://Testing Sprites/Carrot/Spin/Carrot11.png" id="12_4yobh"]
+[ext_resource type="Texture2D" uid="uid://b5lurafgs8rpc" path="res://Testing Sprites/Carrot/Spin/Carrot12.png" id="13_fsawg"]
+[ext_resource type="Texture2D" uid="uid://c5odf8dc503ud" path="res://Testing Sprites/Carrot/Spin/Carrot13.png" id="14_2i6n5"]
+[ext_resource type="Texture2D" uid="uid://dleojn5q6bjfr" path="res://Testing Sprites/Carrot/Spin/Carrot14.png" id="15_yfunp"]
+[ext_resource type="Texture2D" uid="uid://dux2caxjhl5ag" path="res://Testing Sprites/Carrot/Spin/Carrot15.png" id="16_hy7gn"]
+[ext_resource type="Texture2D" uid="uid://bfmb56xh74wm6" path="res://Testing Sprites/Carrot/Spin/Carrot16.png" id="17_0lm6v"]
+[ext_resource type="Texture2D" uid="uid://cfok0fm23ihhh" path="res://Testing Sprites/Carrot/Spin/Carrot17.png" id="18_twrgt"]
+[ext_resource type="Texture2D" uid="uid://dfvymp4p6mjkt" path="res://Testing Sprites/Carrot/Spin/Carrot18.png" id="19_kpyxm"]
+[ext_resource type="Texture2D" uid="uid://f8j6ulbpp3x6" path="res://Testing Sprites/Carrot/Spin/Carrot19.png" id="20_25r63"]
+[ext_resource type="Texture2D" uid="uid://dghi4ql203332" path="res://Testing Sprites/Carrot/Spin/Carrot20.png" id="21_afrvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
+size = Vector2(13.419354, 9.634409)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gypov"]
+atlas = ExtResource("2_hmfi6")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn0lq"]
+atlas = ExtResource("3_caihx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nnwg"]
+atlas = ExtResource("4_u6ra8")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyiae"]
+atlas = ExtResource("5_6tn27")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkl7e"]
+atlas = ExtResource("6_n5sgi")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43sc6"]
+atlas = ExtResource("7_nija5")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi78m"]
+atlas = ExtResource("8_w4j3n")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6yy3"]
+atlas = ExtResource("9_4jo5g")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phjjd"]
+atlas = ExtResource("10_enven")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8lr8"]
+atlas = ExtResource("11_ubwbb")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qofuw"]
+atlas = ExtResource("12_4yobh")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo8d8"]
+atlas = ExtResource("13_fsawg")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g3by"]
+atlas = ExtResource("14_2i6n5")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhgnt"]
+atlas = ExtResource("15_yfunp")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im42d"]
+atlas = ExtResource("16_hy7gn")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liwhq"]
+atlas = ExtResource("17_0lm6v")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxmn8"]
+atlas = ExtResource("18_twrgt")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsh0s"]
+atlas = ExtResource("19_kpyxm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie3bk"]
+atlas = ExtResource("20_25r63")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47wis"]
+atlas = ExtResource("21_afrvk")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Die",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gypov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn0lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nnwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyiae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkl7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43sc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi78m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6yy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phjjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8lr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qofuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo8d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g3by")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhgnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im42d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liwhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxmn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsh0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie3bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47wis")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="gummy worm" type="Area2D" unique_id=267568932]
+position = Vector2(1, 1)
+script = ExtResource("1_ffjwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
+position = Vector2(39.5, 8)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
+texture_filter = 1
+position = Vector2(38, -1)
+scale = Vector2(0.7890623, 0.7890623)
+sprite_frames = SubResource("SpriteFrames_ggavl")
+autoplay = "default"
+frame_progress = 0.25078383
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
+script = ExtResource("3_lu4cr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1535041137]
+position = Vector2(40, 8)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1249456762]
+modulate = Color(1, 0.3367645, 0.25801787, 1)
+self_modulate = Color(1, 0.36924532, 0.2869239, 1)
+texture_filter = 1
+offset_left = 9.0
+offset_top = -52.0
+offset_right = 72.75
+offset_bottom = -37.0
+max_value = 5.0
+step = 1.0
+rounded = true
+show_percentage = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

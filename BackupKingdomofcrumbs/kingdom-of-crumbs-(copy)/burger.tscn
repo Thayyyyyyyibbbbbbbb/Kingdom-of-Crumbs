@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dmrdh1758i18i"]
+
+[ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_eu31t"]
+[ext_resource type="Texture2D" uid="uid://b4rl5vttsu8kn" path="res://Build1/burger_spritesheet.png" id="2_eu31t"]
+[ext_resource type="Script" uid="uid://pgpdg76ncnbl" path="res://hurtbox.gd" id="3_xinqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
+size = Vector2(2.5232975, 2.2078853)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu31t"]
+atlas = ExtResource("2_eu31t")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvufg"]
+atlas = ExtResource("2_eu31t")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xinqu"]
+atlas = ExtResource("2_eu31t")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l10p"]
+atlas = ExtResource("2_eu31t")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldck8"]
+atlas = ExtResource("2_eu31t")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj4pt"]
+atlas = ExtResource("2_eu31t")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Die",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu31t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvufg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xinqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l10p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldck8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj4pt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="gummy worm" type="Area2D" unique_id=267568932]
+position = Vector2(1, 1)
+script = ExtResource("1_eu31t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
+position = Vector2(4.0000005, 16.499998)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
+texture_filter = 1
+position = Vector2(4, 10)
+sprite_frames = SubResource("SpriteFrames_ggavl")
+autoplay = "default"
+frame_progress = 0.68031263
+flip_h = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
+script = ExtResource("3_xinqu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1535041137]
+position = Vector2(4, 16.625)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

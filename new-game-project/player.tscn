@@ -262,7 +262,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 10.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -548,7 +548,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvl01"]
-size = Vector2(1.8351254, 1.2616487)
+size = Vector2(1.949821, 1.2616487)
 
 [node name="Body" type="CharacterBody2D" unique_id=2004113084]
 script = ExtResource("1_i3pqv")
@@ -560,8 +560,6 @@ position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_hqns4")
 animation = &"attack"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.72180706
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105201006]
 position = Vector2(1, -1)
@@ -581,11 +579,24 @@ wait_time = 0.5
 script = ExtResource("10_n7ghd")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1328357578]
-position = Vector2(19, 2.5000002)
+position = Vector2(19.5, 2.5000002)
 scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_nvl01")
 disabled = true
 debug_color = Color(5.5350365e-06, 0.6315294, 0.46380228, 0.41960785)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=2129660445]
+modulate = Color(1, 0.3367645, 0.25801787, 1)
+self_modulate = Color(1, 0.36924532, 0.2869239, 1)
+texture_filter = 1
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 18.0
+offset_bottom = -20.0
+max_value = 5.0
+step = 1.0
+rounded = true
+show_percentage = false
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_timer_timeout"]

@@ -1,15 +1,30 @@
 extends Area2D
 
-var health := 3  # Change this to whatever health you want
+@export var max_health: int = 3
+var health: int
+
+@onready var health_bar = $"../HealthBar"
+
 
 func _ready() -> void:
-	area_entered.connect(_on_area_entered)
+	health = max_health
+
+	# Start health bar at 100%
+	if health_bar:
+		health_bar.max_value = 100
+		health_bar.value = 100
+
+	# Detect player's HitBox
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
+
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_hitbox"):
-		health -= 1
-		print("Gummy worm's health is: ", health)
-		
-		if health <= 0:
-			print("Dead gummy worm")
-			get_parent().queue_free()  # Deletes the Gummy Worm root node
+	if not area.is_in_group("player_hitbox"):
+		return
+
+	var enemy = get_parent()
+
+	# Tell the enemy it has been hit
+	if enemy.has_method("take_damage"):
+		enemy.take_damage(1)

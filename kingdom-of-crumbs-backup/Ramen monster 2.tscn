@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://deyq4dv1j6b8a"]
+
+[ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_hes2l"]
+[ext_resource type="Texture2D" uid="uid://cu52kpti5b6k5" path="res://Ramen_AnimationSpritesheet.png" id="2_hes2l"]
+[ext_resource type="Script" uid="uid://pgpdg76ncnbl" path="res://hurtbox.gd" id="3_efflh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
+size = Vector2(13.992831, 9.634409)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llx61"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(0, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efflh"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(128, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dufxg"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(256, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h8vx"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(384, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc7qs"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(512, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qigc7"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(640, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5bl2"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(768, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ictab"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(896, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuybc"]
+atlas = ExtResource("2_hes2l")
+region = Rect2(1024, 384, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Die",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llx61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efflh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dufxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h8vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc7qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qigc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5bl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ictab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuybc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="gummy worm" type="Area2D" unique_id=267568932]
+position = Vector2(1, 1)
+script = ExtResource("1_hes2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
+position = Vector2(40, 8)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
+texture_filter = 1
+position = Vector2(4.000004, 12.000001)
+scale = Vector2(1.6718746, 1.6718746)
+sprite_frames = SubResource("SpriteFrames_ggavl")
+autoplay = "default"
+frame_progress = 0.12203868
+flip_h = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
+script = ExtResource("3_efflh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1535041137]
+position = Vector2(40, 8)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

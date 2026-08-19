@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://fkpopsd6gxsu"]
+
+[ext_resource type="Texture2D" uid="uid://lo57ero7cer" path="res://Worm Sprite Sheet.png" id="1_kneyc"]
+[ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_ulffr"]
+[ext_resource type="Script" uid="uid://pgpdg76ncnbl" path="res://hurtbox.gd" id="3_ccrpo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
+size = Vector2(7.225806, 10.437276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulffr"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccrpo"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_get01"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok8r6"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgw3h"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b30vy"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hph3"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7kpp"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjebc"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rr72"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyffv"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(128, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pe0h"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(160, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27bay"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(192, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sof0w"]
+atlas = ExtResource("1_kneyc")
+region = Rect2(224, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulffr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccrpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_get01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok8r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgw3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b30vy")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hph3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7kpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjebc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rr72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyffv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pe0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27bay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sof0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="gummy worm" type="Area2D" unique_id=267568932]
+position = Vector2(1, 1)
+script = ExtResource("1_ulffr")
+damage_amount = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
+position = Vector2(3.5000005, 1.500001)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
+texture_filter = 1
+position = Vector2(7, -23)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_ggavl")
+autoplay = "default"
+frame_progress = 0.9346013
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
+script = ExtResource("3_ccrpo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1535041137]
+position = Vector2(3.5000005, 1.500001)
+scale = Vector2(8.71875, 8.71875)
+shape = SubResource("RectangleShape2D_ubhxj")
+debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

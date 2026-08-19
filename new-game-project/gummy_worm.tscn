@@ -1,121 +1,77 @@
 [gd_scene format=3 uid="uid://fkpopsd6gxsu"]
 
-[ext_resource type="Texture2D" uid="uid://lo57ero7cer" path="res://Worm Sprite Sheet.png" id="1_kneyc"]
 [ext_resource type="Script" uid="uid://dlpccn730pi0n" path="res://gummy_worm.gd" id="1_ulffr"]
 [ext_resource type="Script" uid="uid://pgpdg76ncnbl" path="res://hurtbox.gd" id="3_ccrpo"]
+[ext_resource type="Texture2D" uid="uid://cu52kpti5b6k5" path="res://Ramen_AnimationSpritesheet.png" id="3_get01"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubhxj"]
-size = Vector2(7.225806, 10.437276)
+size = Vector2(16.802868, 9.634409)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ulffr"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(0, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fujh"]
+atlas = ExtResource("3_get01")
+region = Rect2(0, 256, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccrpo"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(32, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeh55"]
+atlas = ExtResource("3_get01")
+region = Rect2(128, 256, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_get01"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(64, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_plwx7"]
+atlas = ExtResource("3_get01")
+region = Rect2(256, 256, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ok8r6"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(96, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt1cy"]
+atlas = ExtResource("3_get01")
+region = Rect2(384, 256, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgw3h"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(128, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyun6"]
+atlas = ExtResource("3_get01")
+region = Rect2(512, 256, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b30vy"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(160, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iy0y"]
+atlas = ExtResource("3_get01")
+region = Rect2(640, 256, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hph3"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(0, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7kpp"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(32, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjebc"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(64, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5rr72"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(96, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyffv"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(128, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pe0h"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(160, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_27bay"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(192, 0, 32, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sof0w"]
-atlas = ExtResource("1_kneyc")
-region = Rect2(224, 0, 32, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_35a8a"]
+atlas = ExtResource("3_get01")
+region = Rect2(768, 256, 128, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ulffr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ccrpo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_get01")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ok8r6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cgw3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b30vy")
-}],
+"frames": [],
 "loop": true,
 "name": &"Die",
 "speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5hph3")
+"texture": SubResource("AtlasTexture_4fujh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j7kpp")
+"texture": SubResource("AtlasTexture_eeh55")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bjebc")
+"texture": SubResource("AtlasTexture_plwx7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5rr72")
+"texture": SubResource("AtlasTexture_vt1cy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gyffv")
+"texture": SubResource("AtlasTexture_tyun6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1pe0h")
+"texture": SubResource("AtlasTexture_0iy0y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_27bay")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sof0w")
+"texture": SubResource("AtlasTexture_35a8a")
 }],
 "loop": true,
 "name": &"default",
-"speed": 7.0
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 10.0
 }]
 
 [node name="gummy worm" type="Area2D" unique_id=267568932]
@@ -123,26 +79,39 @@ position = Vector2(1, 1)
 script = ExtResource("1_ulffr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869855181]
-position = Vector2(3.5000005, 1.500001)
+position = Vector2(1.2500031, 9)
 scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_ubhxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
 texture_filter = 1
-position = Vector2(7, -23)
-scale = Vector2(7, 7)
+position = Vector2(-25.000002, 11.000001)
+scale = Vector2(1.6718746, 1.6718746)
 sprite_frames = SubResource("SpriteFrames_ggavl")
 autoplay = "default"
-frame_progress = 0.9346013
+flip_h = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
 script = ExtResource("3_ccrpo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1535041137]
-position = Vector2(3.5000005, 1.500001)
+position = Vector2(1, 9)
 scale = Vector2(8.71875, 8.71875)
 shape = SubResource("RectangleShape2D_ubhxj")
 debug_color = Color(0.9649028, 0.17603526, 0.18158463, 0.41960785)
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1133640517]
+modulate = Color(1, 0.3367645, 0.25801787, 1)
+self_modulate = Color(1, 0.36924532, 0.2869239, 1)
+texture_filter = 1
+offset_left = 3.0
+offset_top = -54.0
+offset_right = 66.75
+offset_bottom = -39.0
+max_value = 5.0
+step = 1.0
+rounded = true
+show_percentage = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
