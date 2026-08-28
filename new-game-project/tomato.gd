@@ -9,11 +9,19 @@ extends Area2D
 # Medium red death flash
 @export var death_flash_time: float = 0.25
 
+# Attack cycle
+const ATTACK_ENABLE_TIME: float = 3.0
+const ATTACK_DISABLE_TIME: float = 3.0
+
+# Blue frozen flash
+@export var frozen_flash_time: float = 0.20
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar = $HealthBar
 
 var current_health: int
 var is_dead: bool = false
+var attack_disabled: bool = false
 
 var flash_material: ShaderMaterial
 
@@ -21,7 +29,10 @@ var flash_material: ShaderMaterial
 func _ready() -> void:
 	current_health = max_health
 
-	# Create flash shader
+	# ==================================================
+	# CREATE FLASH SHADER
+	# ==================================================
+
 	var shader := Shader.new()
 
 	shader.code = """
@@ -48,14 +59,23 @@ void fragment() {
 
 	animated_sprite.material = flash_material
 
-	# Health bar
+	# ==================================================
+	# HEALTH BAR
+	# ==================================================
+
 	if health_bar:
 		health_bar.max_value = max_health
-	health_bar.value = current_health
+		health_bar.value = current_health
 
-	# Player touching enemy
+	# ==================================================
+	# PLAYER TOUCHING ENEMY
+	# ==================================================
+
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
+
+	# Start attack cycle
+	start_attack_cycle()
 
 
 # ==================================================
@@ -66,8 +86,72 @@ func _on_body_entered(body: Node) -> void:
 	if is_dead:
 		return
 
+	if attack_disabled:
+		return
+
 	if body.has_method("take_damage"):
 		body.take_damage(damage_amount, global_position)
+
+
+# ==================================================
+# AUTOMATIC ATTACK CYCLE
+# ==================================================
+
+func start_attack_cycle() -> void:
+
+	while not is_dead:
+
+		# ==================================================
+		# ATTACK ENABLED FOR EXACTLY 3 SECONDS
+		# ==================================================
+
+		attack_disabled = false
+		monitoring = true
+
+		print("Enemy attack ENABLED - 3 seconds")
+
+		animated_sprite.play("idle")
+
+		await get_tree().create_timer(ATTACK_ENABLE_TIME).timeout
+
+		if is_dead:
+			return
+
+		# ==================================================
+		# DISABLE ATTACK
+		# ==================================================
+
+		attack_disabled = true
+		monitoring = false
+
+		print("Enemy attack DISABLED - 3 seconds")
+
+		animated_sprite.play("idle")
+
+		# Blue effect
+		flash_blue()
+
+		# ==================================================
+		# DISABLED FOR EXACTLY 3 SECONDS
+		# ==================================================
+
+		await get_tree().create_timer(ATTACK_DISABLE_TIME).timeout
+
+		if is_dead:
+			return
+
+		# ==================================================
+		# ENABLE AGAIN
+		# ==================================================
+
+		remove_blue_flash()
+
+		attack_disabled = false
+		monitoring = true
+
+		print("Enemy attack ENABLED again")
+
+		animated_sprite.play("idle")
 
 
 # ==================================================
@@ -81,18 +165,20 @@ func take_damage(amount: int = 1) -> void:
 	current_health -= amount
 	current_health = max(0, current_health)
 
-	print("Gummy worm health: ", current_health, "/", max_health)
+	print(
+		"Gummy worm health: ",
+		current_health,
+		"/",
+		max_health
+	)
 
-	# Update health bar
 	if health_bar:
 		health_bar.value = current_health
 
-	# Check if enemy died
 	if current_health <= 0:
 		die()
 		return
 
-	# Flash white when hit
 	flash_white()
 
 
@@ -107,19 +193,16 @@ func flash_white() -> void:
 	if flash_material == null:
 		return
 
-	# Set flash colour to white
 	flash_material.set_shader_parameter(
 		"flash_color",
 		Vector3(1.0, 1.0, 1.0)
 	)
 
-	# Make completely white
 	flash_material.set_shader_parameter(
 		"flash_amount",
 		1.0
 	)
 
-	# Slowly return to normal
 	var tween := create_tween()
 
 	tween.tween_property(
@@ -127,6 +210,55 @@ func flash_white() -> void:
 		"shader_parameter/flash_amount",
 		0.0,
 		flash_time
+	)
+
+
+# ==================================================
+# BLUE DISABLED FLASH
+# ==================================================
+
+func flash_blue() -> void:
+	if is_dead:
+		return
+
+	if flash_material == null:
+		return
+
+	flash_material.set_shader_parameter(
+		"flash_color",
+		Vector3(0.0, 0.4, 1.0)
+	)
+
+	flash_material.set_shader_parameter(
+		"flash_amount",
+		1.0
+	)
+
+	var tween := create_tween()
+
+	tween.tween_property(
+		flash_material,
+		"shader_parameter/flash_amount",
+		0.65,
+		frozen_flash_time
+	)
+
+
+# ==================================================
+# REMOVE BLUE EFFECT
+# ==================================================
+
+func remove_blue_flash() -> void:
+	if flash_material == null:
+		return
+
+	var tween := create_tween()
+
+	tween.tween_property(
+		flash_material,
+		"shader_parameter/flash_amount",
+		0.0,
+		0.15
 	)
 
 
@@ -150,37 +282,30 @@ func die() -> void:
 
 	print("Gummy worm died")
 
-	# Stop enemy from attacking/moving
 	set_process(false)
 	set_physics_process(false)
 
-	# Hide health bar
+	attack_disabled = true
+	monitoring = false
+
 	if health_bar:
 		health_bar.visible = false
 
-	# Stop current animation
 	animated_sprite.stop()
 
-	# ==================================================
-	# MEDIUM RED DEATH FLASH
-	# ==================================================
-
+	# Medium red death flash
 	if flash_material:
-		# Medium red
 		flash_material.set_shader_parameter(
 			"flash_color",
 			Vector3(0.6, 0.0, 0.0)
 		)
 
-		# Make the enemy completely medium red
 		flash_material.set_shader_parameter(
 			"flash_amount",
 			1.0
 		)
 
-	# Keep red flash visible
 	await get_tree().create_timer(death_flash_time).timeout
 
-	# Remove enemy
 	if is_instance_valid(self):
 		queue_free()

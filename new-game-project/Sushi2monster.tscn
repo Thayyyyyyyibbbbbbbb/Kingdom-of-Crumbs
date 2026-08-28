@@ -80,7 +80,6 @@ shape = SubResource("RectangleShape2D_ubhxj")
 texture_filter = 1
 position = Vector2(-25, 12)
 sprite_frames = SubResource("SpriteFrames_ggavl")
-animation = &"hurt"
 autoplay = "default"
 flip_h = true
 

@@ -570,7 +570,7 @@ root_node = NodePath("../CollisionShape2D")
 libraries/ = SubResource("AnimationLibrary_1jxqw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1571791391]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="InvincibleTimer" type="Timer" parent="." unique_id=529206796]
 wait_time = 0.5

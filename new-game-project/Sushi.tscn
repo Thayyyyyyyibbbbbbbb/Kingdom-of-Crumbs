@@ -63,7 +63,7 @@ animations = [{
 }, {
 "frames": [],
 "loop": true,
-"name": &"hurt",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -78,9 +78,8 @@ shape = SubResource("RectangleShape2D_ubhxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
 texture_filter = 1
-position = Vector2(4.000004, 12.000001)
+position = Vector2(4, 12)
 sprite_frames = SubResource("SpriteFrames_ggavl")
-animation = &"hurt"
 autoplay = "default"
 flip_h = true
 

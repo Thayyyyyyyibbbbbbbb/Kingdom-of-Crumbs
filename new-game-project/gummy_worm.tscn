@@ -35,6 +35,22 @@ region = Rect2(640, 256, 128, 64)
 atlas = ExtResource("3_get01")
 region = Rect2(768, 256, 128, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccrpo"]
+atlas = ExtResource("3_get01")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_get01"]
+atlas = ExtResource("3_get01")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok8r6"]
+atlas = ExtResource("3_get01")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgw3h"]
+atlas = ExtResource("3_get01")
+region = Rect2(384, 0, 128, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ggavl"]
 animations = [{
 "frames": [],
@@ -68,10 +84,22 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccrpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_get01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok8r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgw3h")
+}],
 "loop": true,
-"name": &"hurt",
-"speed": 10.0
+"name": &"idle ",
+"speed": 7.0
 }]
 
 [node name="gummy worm" type="Area2D" unique_id=267568932]
@@ -85,10 +113,12 @@ shape = SubResource("RectangleShape2D_ubhxj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1049190273]
 texture_filter = 1
-position = Vector2(-25.000002, 11.000001)
+position = Vector2(-25.000002, 13.000001)
 scale = Vector2(1.6718746, 1.6718746)
 sprite_frames = SubResource("SpriteFrames_ggavl")
+animation = &"idle "
 autoplay = "default"
+frame_progress = 0.7723217
 flip_h = true
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=2129176597]
